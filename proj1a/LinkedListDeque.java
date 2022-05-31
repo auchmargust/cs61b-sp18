@@ -1,11 +1,11 @@
-public class LinkedListDeque<Item> {
-    private class Node<Item> {
-        private Item value;
+public class LinkedListDeque<T> {
+    private class Node<T> {
+        private T value;
         private Node prev;
         private Node next;
 
         @edu.umd.cs.findbugs.annotations.SuppressFBWarnings("URF_UNREAD_FIELD")
-        private Node(Item i) {
+        private Node(T i) {
             value = i;
             prev = null;
             next = null;
@@ -34,24 +34,24 @@ public class LinkedListDeque<Item> {
         return size;
     }
 
-    public Item get(int index) {
+    public T get(int index) {
         int counter = 0;
         while (counter != index) {
             first = first.next;
             counter++;
         }
-        return (Item) first.value;
+        return (T) first.value;
     }
 
-    private Item getRecursiveHelper(int index, Node p) {
+    private T getRecursiveHelper(int index, Node p) {
         if (index == 0) {
-            return (Item) p.value;
+            return (T) p.value;
         } else {
-            return (Item) getRecursiveHelper(index - 1, p.next);
+            return (T) getRecursiveHelper(index - 1, p.next);
         }
     }
 
-    public Item getRecursive(int index) {
+    public T getRecursive(int index) {
         if (size == 0) {
             return null;
         } else if (index < 0 || index > size) {
@@ -71,7 +71,7 @@ public class LinkedListDeque<Item> {
         }
     }
 
-    public void addFirst(Item i) {
+    public void addFirst(T i) {
         Node toAdd = new Node(i);
         Node temp = first.next;
         toAdd.next = temp;
@@ -81,11 +81,11 @@ public class LinkedListDeque<Item> {
         size++;
     }
 
-    public Item removeFirst() {
+    public T removeFirst() {
         if (size == 0) {
             return null;
         }
-        Item x = (Item) first.next.value;
+        T x = (T) first.next.value;
         Node temp = first.next.next;
         first.next.next = null;
         first.next.prev = null;
@@ -96,7 +96,7 @@ public class LinkedListDeque<Item> {
         return x;
     }
 
-    public void addLast(Item i) {
+    public void addLast(T i) {
         Node toAdd = new Node(i);
         Node temp = end.prev;
         toAdd.prev = temp;
@@ -107,11 +107,11 @@ public class LinkedListDeque<Item> {
 
     }
 
-    public Item removeLast() {
+    public T removeLast() {
         if (size == 0) {
             return null;
         }
-        Item x = (Item) end.prev.value;
+        T x = (T) end.prev.value;
         Node temp = end.prev.prev;
 
         end.prev.next = null;
@@ -122,6 +122,4 @@ public class LinkedListDeque<Item> {
         size--;
         return x;
     }
-
-
 }
