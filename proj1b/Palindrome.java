@@ -39,7 +39,7 @@ public class Palindrome {
 		if (d.size() <= 1) {
 			return true;
 		} else {
-			return cc.equalChars(Character.toLowerCase(d.removeFirst()), Character.toLowerCase(d.removeLast()))
+			return cc.equalChars(d.removeFirst(), d.removeLast())
 					&& isPalindromeHelper(d, cc);
 		}
 	}
