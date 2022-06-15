@@ -14,33 +14,32 @@ public class TestOffByOne {
 		assertTrue(offByOne.equalChars('a', 'b'));
 		assertTrue(offByOne.equalChars('r', 'q'));
 		assertTrue(offByOne.equalChars('A', 'B'));
-		assertTrue(offByOne.equalChars('b', 'A'));
+		assertTrue(offByOne.equalChars('@', '?'));
 		
 		assertFalse(offByOne.equalChars('r', 'r'));
 		assertFalse(offByOne.equalChars('r', 'a'));
 		assertFalse(offByOne.equalChars('R', 'a'));
 		
-		offByOne.equalChars('%', 'a');
 		assertFalse(offByOne.equalChars('%', 'a'));
 		assertFalse(offByOne.equalChars('%', '/'));
 		assertFalse(offByOne.equalChars('%', '%'));
-		assertFalse(offByOne.equalChars('%', 'F'));
+		assertFalse(offByOne.equalChars('%', '!'));
 	}
-
-//	@Test
-//	public void testOffByN() {
-//		CharacterComparator obn = new OffByN(5);
-//		assertTrue(obn.equalChars('a', 'f'));
-//		assertTrue(obn.equalChars('A', 'F'));
-//		assertTrue(obn.equalChars('F', 'a'));
-//
-//		assertFalse(obn.equalChars('r', 'r'));
-//		assertFalse(obn.equalChars('r', 'a'));
-//		assertFalse(obn.equalChars('R', 'a'));
-//
-//		assertFalse(obn.equalChars('%', 'a'));
-//		assertFalse(obn.equalChars('%', '/'));
-//		assertFalse(obn.equalChars('%', '%'));
-//		assertFalse(obn.equalChars('%', 'F'));
-//	}
+	
+	@Test
+	public void testOffByN() {
+		CharacterComparator obn = new OffByN(5);
+		assertTrue(obn.equalChars('a', 'f'));
+		assertTrue(obn.equalChars('A', 'F'));
+		assertTrue(obn.equalChars('F', 'a'));
+		
+		assertFalse(obn.equalChars('r', 'r'));
+		assertFalse(obn.equalChars('r', 'a'));
+		assertFalse(obn.equalChars('R', 'a'));
+		
+		assertFalse(obn.equalChars('%', 'a'));
+		assertFalse(obn.equalChars('%', '/'));
+		assertFalse(obn.equalChars('%', '%'));
+		assertFalse(obn.equalChars('%', 'F'));
+	}
 }
